@@ -4,15 +4,13 @@ let barkWorker = n => {
   const worker = new CronJob(
     `*/${n} * * * * *`,
     function() {
-      if (n === 0 && this.running) {
-        this.stop();
-      }
       console.log("Bark");
     },
     null,
-    true,
+    false,
     "America/New_York"
   );
+  worker.start();
 };
 
-module.exports = barkWorker;
+module.exports = barkerWorker;
